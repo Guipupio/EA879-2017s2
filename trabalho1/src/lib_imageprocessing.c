@@ -74,9 +74,10 @@ void salvar_imagem(char *nome_do_arquivo, imagem *I) {
   FreeImage_Save(FIF_JPEG, bitmapOut, nome_do_arquivo, JPEG_DEFAULT);
 }
 
-int pixel_max (char *nome_do_arquivo, float *posicao){
+int * pixel_max (char *nome_do_arquivo, float *posicao){
 FIBITMAP *bitmapIn;
-  int x, y, indice_max;
+  int x, y;
+  int * indice_max = (int *) calloc (3, sizeof (int));
   float aux1[3];
   RGBQUAD color;
   imagem I;
@@ -128,7 +129,9 @@ FIBITMAP *bitmapIn;
 		//printf("Aux1[k] =  %.2f\nsoma: %.2f\n",aux1[k], soma_aux);
 	}
 	if (soma_aux > soma){
-		indice_max = idx;
+		indice_max[0] = idx;
+		indice_max[1] = i;
+		indice_max[2] = j;
 		for (int k = 0; k<3 ; k++)
 			posicao[k] = aux1[k];
 	} 

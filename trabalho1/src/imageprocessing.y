@@ -64,9 +64,9 @@ PIXEL_MAXIMO:
 		posicao[i] = 0.0;
 
 
-	int indice = pixel_max ($1, posicao);
+	int *indice = pixel_max ($1, posicao);
 	
-	printf("A posicao onde o conjunto dos pixels sao maximos eh: %d\npixel RED: %.2f\npixel GREEN: %.2f\npixel BLUE: %.2f\n", indice, posicao[0],posicao[1],posicao[2]);
+	printf("A posicao onde o conjunto dos pixels sao maximos eh: %d\nLinha: %d\nColuna: %d\npixel RED: %.2f\npixel GREEN: %.2f\npixel BLUE: %.2f\n", indice[0],indice[1],indice[2], posicao[0],posicao[1],posicao[2]);
 
 	
 	
