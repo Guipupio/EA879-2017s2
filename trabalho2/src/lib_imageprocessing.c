@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "imageprocessing.h"
+#include "util.h"
 
 #include <FreeImage.h>
 
@@ -136,10 +137,6 @@ FIBITMAP *bitmapIn;
 		for (int k = 0; k<3 ; k++)
 			posicao[k] = aux1[k];
 	} 
-	
-
-	
-	
      }	
 
  
@@ -290,7 +287,3 @@ FIBITMAP *bitmapIn;
 
 return indice_max;
   }
-
-
-
-

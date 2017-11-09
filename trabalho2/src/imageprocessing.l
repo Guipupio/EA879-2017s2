@@ -26,7 +26,7 @@ void yyerror(char *);
           yylval.strval[i] = yytext[i];
 
         yylval.strval[yyleng] = '\0';
-        printf ("Achei nome: %s\n", yylval.strval);
+        //printf ("Achei nome: %s\n", yylval.strval);
         return STRING;
        }
 
@@ -58,7 +58,7 @@ void yyerror(char *);
 		yylval.fval = brilho;
 		//yylval.fval[0] = 0.0 ;	
 	}
-	printf("Passando: %f\n", yylval.fval);
+	//printf("Passando: %f\n", yylval.fval);
           return Operacao;
         }
 
@@ -69,7 +69,7 @@ void yyerror(char *);
         	yylval.strval[i-1] = yytext[i];
 	}
 	yylval.strval[yyleng-1] = '\0';
-	printf("nome2: %s\n",yylval.strval);
+	//printf("nome2: %s\n",yylval.strval);
 	return MAX_PIXEL;
 }
 
