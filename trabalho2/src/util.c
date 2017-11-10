@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "util.h"
-#include "imageprocessing.h"
 
 typedef void (*Funcao)(void);
 
@@ -27,27 +26,29 @@ void run(void){
 	printf("Brilho a ser aplicado: %.1f\n",parametros.brilho);
 	printf("Numero de Threads: %d\n", params.num_threads);
 
-	switch (parametros.operacao){
-		case ALTERA_BRILHO:
-		case COPIA_IMAGEM:
+	for (int i = 0; i< params.num_iteration; i++){
+		switch (parametros.operacao){
+			case ALTERA_BRILHO:
+			case COPIA_IMAGEM:
 
-			if(params.type == THREADS)
-				medir_tempo(manipula_imagem_threads);
-			else if (params.type == SEQUENCIAL)
-				medir_tempo(manipula_imagem);
-			break;
+				if(params.type == THREADS)
+					medir_tempo(manipula_imagem_threads);
+				else if (params.type == SEQUENCIAL)
+					medir_tempo(manipula_imagem);
+				break;
 
-		case PIXEL_MAXIMO:
+			case PIXEL_MAXIMO:
 
-			if(params.type == THREADS)
-				printf("Pixel max via thread\n");
-			else if (params.type == SEQUENCIAL)
-				printf("PIXEL_MAXIMO\n");
-			break;
+				if(params.type == THREADS)
+					printf("Pixel max via thread\n");
+				else if (params.type == SEQUENCIAL)
+					printf("PIXEL_MAXIMO\n");
+				break;
 
-		default:
-			printf("Erro!\n");
-			exit(EXIT_FAILURE);
+			default:
+				printf("Erro!\n");
+				exit(EXIT_FAILURE);
+		}
 	}
 
 
