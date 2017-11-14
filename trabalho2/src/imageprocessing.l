@@ -1,4 +1,3 @@
-
 %{
 #include <stdlib.h>
 #include <string.h>
@@ -64,7 +63,7 @@ void yyerror(char *);
 
 (\[[a-zA-Z0-9\.]+\])	{
 	
-	printf("nome1: %s\n",yytext);
+	//printf("nome1: %s\n",yytext);
 	for (int i = 1; i < yyleng -1; i++ ){
         	yylval.strval[i-1] = yytext[i];
 	}

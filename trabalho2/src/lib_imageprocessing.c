@@ -22,9 +22,10 @@ imagem abrir_imagem(char *nome_do_arquivo, float brilho) {
   bitmapIn = FreeImage_Load(FIF_JPEG, nome_do_arquivo, 0);
 
   if (bitmapIn == 0) {
-    printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
+    //// printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
+    exit(1);
   } else {
-    printf("Arquivo lido corretamente!\n");
+    //  // printf("Arquivo lido corretamente!\n");
    }
 
   x = FreeImage_GetWidth(bitmapIn);
@@ -57,7 +58,7 @@ void salvar_imagem(char *nome_do_arquivo, imagem *I) {
   FIBITMAP *bitmapOut;
   RGBQUAD color;
 
-  printf("Salvando imagem %d por %d...\n", I->width, I->height);
+  //// printf("Salvando imagem %d por %d...\n", I->width, I->height);
   bitmapOut = FreeImage_Allocate(I->width, I->height, 24, 0, 0, 0);
 
    for (int i=0; i<I->width; i++) {
@@ -94,9 +95,9 @@ FIBITMAP *bitmapIn;
   bitmapIn = FreeImage_Load(FIF_JPEG, nome_do_arquivo, 0);
 
   if (bitmapIn == 0) {
-    printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
+    // printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
   } else {
-    printf("Arquivo lido corretamente!\n");
+   // // printf("Arquivo lido corretamente!\n");
    }
 
   x = FreeImage_GetWidth(bitmapIn);
@@ -124,11 +125,11 @@ FIBITMAP *bitmapIn;
 	aux1[1] = I.g[idx];
 	aux1[2] = I.b[idx];
 	
-	//printf("Imagem: %.2f\n", I.r[idx]);
+	//// printf("Imagem: %.2f\n", I.r[idx]);
 	for (int k = 0; k<3 ; k++){
 		soma_aux += aux1[k]; 	
 		soma +=	posicao[k];
-		//printf("Aux1[k] =  %.2f\nsoma: %.2f\n",aux1[k], soma_aux);
+		//// printf("Aux1[k] =  %.2f\nsoma: %.2f\n",aux1[k], soma_aux);
 	}
 	if (soma_aux > soma){
 		indice_max[0] = idx;
@@ -161,9 +162,9 @@ imagem abrir_imagem_threads(char *nome_do_arquivo, float brilho, int num_threads
   bitmapIn = FreeImage_Load(FIF_JPEG, nome_do_arquivo, 0);
 
   if (bitmapIn == 0) {
-    printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
+    // printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
   } else {
-    printf("Arquivo lido corretamente!\n");
+    // printf("Arquivo lido corretamente!\n");
    }
 
   x = FreeImage_GetWidth(bitmapIn);
@@ -196,7 +197,7 @@ void salvar_imagem_threads(char *nome_do_arquivo, imagem *I, int num_threads) {
   FIBITMAP *bitmapOut;
   RGBQUAD color;
 
-  printf("Salvando imagem %d por %d...\n", I->width, I->height);
+  // printf("Salvando imagem %d por %d...\n", I->width, I->height);
   bitmapOut = FreeImage_Allocate(I->width, I->height, 24, 0, 0, 0);
 
    for (int i=0; i<I->width; i++) {
@@ -233,9 +234,9 @@ FIBITMAP *bitmapIn;
   bitmapIn = FreeImage_Load(FIF_JPEG, nome_do_arquivo, 0);
 
   if (bitmapIn == 0) {
-    printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
+    // printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
   } else {
-    printf("Arquivo lido corretamente!\n");
+    // printf("Arquivo lido corretamente!\n");
    }
 
   x = FreeImage_GetWidth(bitmapIn);
@@ -263,11 +264,11 @@ FIBITMAP *bitmapIn;
   aux1[1] = I.g[idx];
   aux1[2] = I.b[idx];
   
-  //printf("Imagem: %.2f\n", I.r[idx]);
+  //// printf("Imagem: %.2f\n", I.r[idx]);
   for (int k = 0; k<3 ; k++){
     soma_aux += aux1[k];  
     soma += posicao[k];
-    //printf("Aux1[k] =  %.2f\nsoma: %.2f\n",aux1[k], soma_aux);
+    //// printf("Aux1[k] =  %.2f\nsoma: %.2f\n",aux1[k], soma_aux);
   }
   if (soma_aux > soma){
     indice_max[0] = idx;

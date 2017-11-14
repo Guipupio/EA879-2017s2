@@ -2,7 +2,6 @@
 #ifndef IMAGEPROCESSING_H
 #define IMAGEPROCESSING_H
 
-
 typedef struct {
   unsigned int width, height;
   float *r, *g, *b;
@@ -30,7 +29,7 @@ struct user_parameters_operacao {
 struct user_parameters {
 	_type type;		// type of execution
 	int num_threads;	// number of threads
-	int check;			// check result.
+	int type_image;	// check length.
 	int num_iteration;	// number of iteration
 };
 

@@ -90,18 +90,24 @@ void parse(int argc, char* argv[], struct user_parameters* params)
 {
     int i;
     for(i=1; i<argc; i++) {
-        if(!strcmp(argv[i], "-c"))
-            params->check = 1;
+        if(!strcmp(argv[i], "-t")){
+            if (++i < argc)
+            params->type_image = atoi(argv[i]) - 1;
+            else {
+                fprintf(stderr, "-t requires a number\n");
+                exit(EXIT_FAILURE);
+            }
+        }
         else if(!strcmp(argv[i], "--help") || !strcmp(argv[i], "-h")) {
             printf("----------------------------------------------\n");
             printf("-                Trabalho 2                  -\n");
             printf("-      Guia para parametros de execucao      -\n");
             printf("----------------------------------------------\n");
             printf("-h, --help : Show help information\n");
-            printf("-c : Ask to check result\n");
+            printf("-t : type of the image: 1 - small image, 2 - medium image, 3 - large image\n");
             printf("-i : Number of iterations\n");
             printf("-n : Number of threads\n");
-            printf("-t : Choose algorithm (leavng blank will run type task)\n(Options for type) 0 - sequential, 1 - with threads\n");
+            printf("-a : Choose algorithm (leaving blank will run type sequential)\n(Options for type) 0 - sequential, 1 - with threads\n");
             exit(EXIT_SUCCESS);
         } else if(!strcmp(argv[i], "-i")) {
             if (++i < argc)
@@ -118,13 +124,13 @@ void parse(int argc, char* argv[], struct user_parameters* params)
                 fprintf(stderr, "-n requires a number\n");
                 exit(EXIT_FAILURE);
             }
-        } else if(!strcmp(argv[i], "-t")) {
+        } else if(!strcmp(argv[i], "-a")) {
             if (++i < argc)
                 if(atoi(argv[i]))
                     params->type = THREADS;
                 else params->type = SEQUENCIAL;
             else {
-                fprintf(stderr, "-t requires a number\n");
+                fprintf(stderr, "-a requires a number\n");
                 exit(EXIT_FAILURE);
             }
         } else
@@ -136,7 +142,8 @@ int main(int argc, char* argv[]) {
 
 	memset(&params, 0, sizeof(params));
 	params.type = SEQUENCIAL; 		// default seq
-	parse(argc, argv, &params);
+	params.num_iteration = 1;
+    parse(argc, argv, &params);
 
   FreeImage_Initialise(0);
   yyparse();
